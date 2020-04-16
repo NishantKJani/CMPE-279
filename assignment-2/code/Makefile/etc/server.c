@@ -67,8 +67,25 @@ int main(int argc, char const *argv[])
         } 
 
         char array[64];
-        sprintf( array, "%d", new_socket );        
+        int n=new_socket;
+        int len=0;
+        while(n>0)
+        {
+            n=n/10;
+            len++;
+        }
 
+        int i=0;
+        n=new_socket;
+        for(i=0;i<len;i++)
+        {
+            int r=n%10;
+            n=n/10;
+            array[len-(i+1)]=r+'0';
+        }
+        array[len]='\0';
+
+        
         char *args[]={array,NULL};
         execvp(argv[1],args);
 
