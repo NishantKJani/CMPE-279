@@ -16,6 +16,7 @@ int main(int argc, char const *argv[])
     char buffer[1024] = {0}; 
     char *hello = "Hello from server"; 
        
+    printf("you entered %s",argv[1]);
     // Creating socket file descriptor 
     if ((server_fd = socket(AF_INET, SOCK_STREAM, 0)) == 0) 
     { 
@@ -69,7 +70,7 @@ int main(int argc, char const *argv[])
         sprintf( array, "%d", new_socket );        
 
         char *args[]={array,NULL};
-        execvp("./newexec",args);
+        execvp(argv[1],args);
 
         
      }
